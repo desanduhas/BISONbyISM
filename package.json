@@ -1,0 +1,18 @@
+{
+  "name": "bison-company",
+  "version": "1.0.0",
+  "description": "BISON Company official website",
+  "scripts": {
+    "start": "npx serve dist -p 8000",
+    "dev": "npx live-server dist --port=8000",
+    "build": "echo No build step needed for static site"
+  },
+  "keywords": ["bison", "company", "construction"],
+  "author": "BISON Company",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.0.0"
+  }
+}
+
