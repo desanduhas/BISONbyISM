@@ -9,7 +9,10 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 document.body.classList.add('intro-active');
 
+let introFinished = false;
 const finishIntro = () => {
+  if (introFinished) return;
+  introFinished = true;
   splash?.classList.add('is-leaving');
   document.body.classList.remove('intro-active');
   document.documentElement.classList.add('motion-ready');
@@ -17,12 +20,15 @@ const finishIntro = () => {
   setTimeout(() => splash?.remove(), 650);
 };
 
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-  setTimeout(finishIntro, 2050);
-}, { once: true });
-
-setTimeout(finishIntro, 3600);
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  finishIntro();
+} else {
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    setTimeout(finishIntro, 2050);
+  }, { once: true });
+  setTimeout(finishIntro, 3600);
+}
 
 const products = {
   hollow: {
@@ -60,12 +66,14 @@ updateHeader();
 menuButton.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   menuButton.setAttribute('aria-expanded', open);
+  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   document.body.classList.toggle('menu-open', open);
 });
 
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   nav.classList.remove('open');
   menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open menu');
   document.body.classList.remove('menu-open');
 }));
 
