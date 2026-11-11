@@ -2,6 +2,27 @@ const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const dialog = document.querySelector('#product-dialog');
+const splash = document.querySelector('.intro-splash');
+const heroArt = document.querySelector('.hero-art');
+
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+document.body.classList.add('intro-active');
+
+const finishIntro = () => {
+  splash?.classList.add('is-leaving');
+  document.body.classList.remove('intro-active');
+  document.documentElement.classList.add('motion-ready');
+  window.scrollTo(0, 0);
+  setTimeout(() => splash?.remove(), 650);
+};
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+  setTimeout(finishIntro, 2050);
+}, { once: true });
+
+setTimeout(finishIntro, 3600);
 
 const products = {
   hollow: {
@@ -28,6 +49,9 @@ const products = {
 
 function updateHeader() {
   header.classList.toggle('scrolled', window.scrollY > 90);
+  if (heroArt && window.innerWidth > 820) {
+    heroArt.style.setProperty('--hero-shift', `${Math.min(window.scrollY * 0.09, 36)}px`);
+  }
 }
 
 window.addEventListener('scroll', updateHeader, { passive: true });
@@ -52,7 +76,7 @@ const observer = new IntersectionObserver(entries => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
 
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 
