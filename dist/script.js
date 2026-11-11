@@ -4,6 +4,7 @@ const nav = document.querySelector('.main-nav');
 const dialog = document.querySelector('#product-dialog');
 const splash = document.querySelector('.intro-splash');
 const heroArt = document.querySelector('.hero-art');
+const brandLink = document.querySelector('.brand');
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
@@ -62,6 +63,16 @@ function updateHeader() {
 
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
+
+brandLink.addEventListener('click', event => {
+  event.preventDefault();
+  nav.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open menu');
+  document.body.classList.remove('menu-open');
+  history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+});
 
 menuButton.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
