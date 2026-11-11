@@ -14,6 +14,7 @@
   </script>
 </head>
 <body>
+  <div id="top" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="intro-splash" aria-hidden="true">
     <div class="intro-lines"><i></i><i></i></div>
@@ -27,9 +28,9 @@
     </div>
   </div>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="BISON home">
+      <a class="brand" href="#top" data-scroll-top aria-label="BISON home, back to top">
         <img src="assets/logo-transparent.png" alt="BISON - Your Building Partner" width="162" height="135">
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
@@ -206,7 +207,9 @@
 
   <footer>
     <div class="container footer-grid">
-      <img src="assets/logo-transparent.png" alt="BISON" loading="lazy">
+      <a class="footer-brand" href="#top" data-scroll-top aria-label="BISON home, back to top">
+        <img src="assets/logo-transparent.png" alt="BISON" loading="lazy">
+      </a>
       <div><strong>Century Zone (Pvt) Ltd</strong><span>Manufacturer & brand owner of BISON</span></div>
       <p>&copy; <span id="year"></span> BISON. All rights reserved.</p>
     </div>
@@ -221,6 +224,6 @@
     <a class="button primary" href="#contact">Talk to our team</a>
   </dialog>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
