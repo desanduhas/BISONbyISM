@@ -27,7 +27,8 @@ button { font: inherit; }
 .intro-word { display: flex; align-items: center; justify-content: center; gap: .015em; font-family: Impact, "Arial Black", sans-serif; font-size: clamp(4.4rem,12vw,10rem); font-style: italic; font-weight: 900; line-height: .8; letter-spacing: -.025em; transform: scaleX(1.04); opacity: 0; animation: intro-word 1.35s cubic-bezier(.2,.75,.25,1) .62s forwards; }
 .intro-word span { display: inline-block; }
 .intro-word .red-letter { color: var(--red); }
-.intro-word .split-letter { min-width: .68em; color: var(--navy); background: none; }
+.intro-word .split-letter { position: relative; min-width: .68em; color: var(--navy); background: none; }
+.intro-word .split-letter::after { content: "N"; position: absolute; inset: 0; color: var(--red); clip-path: polygon(74% 0,100% 0,100% 100%,46% 100%); pointer-events: none; }
 .intro-splash p { margin: 22px 0 0; color: var(--navy); font-size: .64rem; font-weight: 800; letter-spacing: .52em; text-align: center; text-transform: uppercase; opacity: 0; animation: intro-tagline .8s ease 1.02s forwards; }
 .intro-lines i { position: absolute; z-index: -1; width: 46vw; height: 1px; background: rgba(8,47,99,.16); }
 .intro-lines i:first-child { top: 28%; left: -8%; transform: rotate(-18deg); }
