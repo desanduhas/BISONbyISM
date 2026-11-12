@@ -132,7 +132,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(2.5rem,4vw,4.7rem); font-weig
 .performance-list strong { font-size: .91rem; font-weight: 620; letter-spacing: .02em; }
 
 .benefits { background: var(--white); }
-.benefit-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); }
+.benefit-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); }
 .benefit-grid > a { min-height: 330px; display: flex; flex-direction: column; padding: 34px 32px; border-right: 1px solid var(--line); transition: background .2s ease; }
 .benefit-grid > a:first-child { border-left: 1px solid var(--line); }
 .benefit-grid > a:hover { background: var(--paper); }
