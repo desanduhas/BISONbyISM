@@ -1,3 +1,7 @@
+// Scroll restoration - moved from inline script
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
@@ -105,7 +109,13 @@ document.querySelectorAll('.product-trigger').forEach(button => {
     const product = products[button.dataset.product];
     document.querySelector('#dialog-title').textContent = product.title;
     document.querySelector('#dialog-description').textContent = product.description;
-    document.querySelector('#dialog-features').innerHTML = product.features.map(feature => `<span>${feature}</span>`).join('');
+    const featuresContainer = document.querySelector('#dialog-features');
+    featuresContainer.innerHTML = '';
+    product.features.forEach(feature => {
+      const span = document.createElement('span');
+      span.textContent = feature;
+      featuresContainer.appendChild(span);
+    });
     dialog.showModal();
   });
 });
